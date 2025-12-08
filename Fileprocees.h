@@ -1,7 +1,7 @@
-#ifndef FILEPROCESS_HPP
-#define FILEPROCESS_HPP
+#ifndef FILEPROCESS_H
+#define FILEPROCESS_H
 
-#include "Agenda.hpp"
+#include "Agenda.h"
 
 class FileProcess {
 public:
@@ -13,4 +13,5 @@ public:
     static string getFileExtension(string file_path);
     static bool isFileExist(string file_path);
 };
+
 
