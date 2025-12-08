@@ -1,0 +1,16 @@
+#ifndef FILEPROCESS_HPP
+#define FILEPROCESS_HPP
+
+#include "Agenda.hpp"
+
+class FileProcess {
+public:
+    static bool importList(Agenda &agenda, string file_path);
+    static bool exportList(const Agenda &agenda, string file_path);
+    static bool importCard(Agenda &agenda, string file_path);
+    static bool exportCard(const Agendaltern &item, string file_path);
+    static bool validateFilePath(string file_path);
+    static string getFileExtension(string file_path);
+    static bool isFileExist(string file_path);
+};
+
