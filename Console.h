@@ -2,7 +2,6 @@
 
 #include<iostream>
 #include<string>
-#include<stack>
 #include"Agenda.h"
 #include"AgendaItem.h"
 #include"Fileprocees.h"
@@ -27,8 +26,6 @@ class Console {
         void shutdown();
 
         void showMessage(const std::string& message);
-        void clearMessage();
-        void refreshDisplay();
         void clearScreen();
 
         void menuA01();
