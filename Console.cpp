@@ -48,8 +48,6 @@ void Console::shutdown(){
 void Console::showMessage(const std::string& message){
     std::cout << message << std::endl;
 }
-void Console::clearMessage(){}
-void Console::refreshDisplay(){}
 void Console::clearScreen(){
     system("cls"); // For Windows
 }
@@ -364,3 +362,25 @@ std::string Console::input(){
 }
 
 AgendaItem Console::createItemFromInput(){
+    string name, description, ddl, time;
+    int priority;
+
+    cout << "Enter item name: ";
+    getline(cin, name);
+
+    cout << "Enter item description: ";
+    getline(cin, description);
+
+    cout << "Enter item deadline (DDL): ";
+    getline(cin, ddl);
+
+    cout << "Enter item time: ";
+    getline(cin, time);
+
+    cout << "Enter item priority (integer): ";
+    cin >> priority;
+    cin.ignore(); // To ignore the newline character after integer input
+
+    AgendaItem newItem(name, description, ddl, time, priority);
+    return newItem;
+}
