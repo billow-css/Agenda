@@ -1,9 +1,8 @@
 #include<iostream>
 #include<string>
-#include<stack>
 #include"Agenda.h"
 #include"AgendaItem.h"
-#include"Fileprocees.h"
+#include"FileProcess.h"
 #include"Console.h"
 
 // enum ConsoleState {
@@ -49,6 +48,7 @@ void Console::showMessage(const std::string& message){
     std::cout << message << std::endl;
 }
 void Console::clearScreen(){
+    system("pause"); // Pause before clearing
     system("cls"); // For Windows
 }
 
@@ -97,12 +97,15 @@ void Console::menuB01(){
         cout << "3::edit DDL" <<std::endl;
         cout << "4::edit time" <<std::endl;
         cout << "5::edit status" <<std::endl;
+        cout << "6::edit priority" <<std::endl;
+        cout << "0::quit" <<std::endl;
         std::string choice = input();
         processB01(choice);
     }
 }
 void Console::menuB02(){
     clearScreen();
+    agenda_ptr->displayList();
     std::string choice;
     cout << "1::By_name" << std::endl;
     cout << "2::By_priority" << std::endl;
@@ -182,6 +185,7 @@ void Console::menuH01(){
     cout << "S::Save item to file" << std::endl;
     cout << "0::Return to main menu" << std::endl;
     cout << std::endl;
+    cin.ignore();
     menuA01();
 }
 void Console::processA01(const std::string &choice){
@@ -269,28 +273,26 @@ void Console::processA02(const std::string &choice){
     }
 }
 void Console::processB01(const std::string &choice){
-    int code;
+    int code = std::stoi(choice);
     AgendaItem item = agenda_ptr->getItem(selected_item_id);
-    cin >> code;
-    cin.ignore(); // To ignore the newline character after integer input
     switch (code)
     {
-    case 1:
+    case 1:{
          item.setName(input());
         agenda_ptr->updateItem(selected_item_id, item);
-        break;
-    case 2:
+        break;}
+    case 2:{
         item.setDescription(input());
         agenda_ptr->updateItem(selected_item_id, item);
-        break;
-    case 3:
+        break;}
+    case 3:{
         item.setDDL(input());
         agenda_ptr->updateItem(selected_item_id, item);
-        break;
-    case 4:
+        break;}
+    case 4:{
         item.setTime(input());
         agenda_ptr->updateItem(selected_item_id, item);
-        break; 
+        break; }
     case 5:
         {
             int newStatus;
@@ -298,12 +300,22 @@ void Console::processB01(const std::string &choice){
             cin.ignore(); // To ignore the newline character after integer input
             item.setStatus(newStatus);
             agenda_ptr->updateItem(selected_item_id, item);
-        }
-        break;
+            break;}
+    case 6:
+        {
+            int newPriority;
+            cin >> newPriority;
+            cin.ignore(); // To ignore the newline character after integer input
+            item.setPriority(newPriority);
+            agenda_ptr->updateItem(selected_item_id, item);
+            break;}
+    case 0:
+        menuA02();
+        return;
     default:
         break;
     }
-    menuA02();
+    menuB01();
 }
 void Console::processB02(const std::string &choice){
     if (choice == "1")
