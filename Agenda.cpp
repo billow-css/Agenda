@@ -28,13 +28,13 @@ void Agenda::refreshAllIds(){
 
 int Agenda::addItem(const AgendaItem& item) {
     AgendaItem new_item = item;
-    for (auto i: items)
-    {
-        if (i.getName() == new_item.getName() && i.getDDL() == new_item.getDDL() && i.getTime() == new_item.getTime()) {
-            std::cerr << "Duplicate item detected. Item not added." << std::endl;
-            return -1; 
-        }
-    }
+    // for (auto i: items)
+    // {
+    //     if (i.getName() == new_item.getName() && i.getDDL() == new_item.getDDL() && i.getTime() == new_item.getTime()) {
+    //         std::cerr << "Duplicate item detected. Item not added." << std::endl;
+    //         return -1; 
+    //     }
+    // }
     new_item.setId(next_id++);
     items.push_back(new_item);
     return new_item.getId();
@@ -66,13 +66,13 @@ bool Agenda::removeItem(int target_id){
 bool Agenda::updateItem(int target_id, const AgendaItem& new_item) {
     try
     {
-        for (auto i : items)
-        {
-            if(i.getName() == new_item.getName() && i.getDDL() == new_item.getDDL() && i.getTime() == new_item.getTime()){
-                std::cerr << "Duplicate item detected. Update not performed." << std::endl;
-                return false; 
-            }
-        }
+        // for (auto i : items)
+        // {
+        //     if(i.getName() == new_item.getName() && i.getDDL() == new_item.getDDL() && i.getTime() == new_item.getTime()){
+        //         std::cerr << "Duplicate item detected. Update not performed." << std::endl;
+        //         return false; 
+        //     }
+        // }
         for (auto& item : items) {
             if (item.getId() == target_id) {
                 item = new_item;
@@ -99,12 +99,12 @@ void Agenda::insertItem(int position, const AgendaItem &item){
             throw std::out_of_range("Invalid position: " + std::to_string(position));
         }
         AgendaItem new_item = item;
-        for (auto i : items)
-        {
-            if(i.getName() == new_item.getName() && i.getDDL() == new_item.getDDL() && i.getTime() == new_item.getTime()){
-                throw std::runtime_error("Duplicate item detected. Update not performed.");
-            }
-        }
+        // for (auto i : items)
+        // {
+        //     if(i.getName() == new_item.getName() && i.getDDL() == new_item.getDDL() && i.getTime() == new_item.getTime()){
+        //         throw std::runtime_error("Duplicate item detected. Update not performed.");
+        //     }
+        // }
         new_item.setId(next_id++);
         items.insert(items.begin() + position, new_item);
         is_dirty = true;
