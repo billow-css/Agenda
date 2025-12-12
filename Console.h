@@ -4,7 +4,7 @@
 #include<string>
 #include"Agenda.h"
 #include"AgendaItem.h"
-#include"Fileprocees.h"
+#include"FileProcess.h"
 
 enum ConsoleState {
     A01_MAIN_MENU = 0,
@@ -44,12 +44,11 @@ class Console {
 
         std::string input();
 
-        AgendaItem Console::createItemFromInput();
+        AgendaItem createItemFromInput();
 
     private:
         Agenda* agenda_ptr;
         FileProcess file_processor;
         int current_state;
-        std::stack<ConsoleState> state_history;
         int selected_item_id;
 };
