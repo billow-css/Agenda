@@ -118,18 +118,14 @@ void Agenda::insertItem(int position, const AgendaItem &item){
 }
 
 AgendaItem Agenda::getItem(int target_id) const {
-    try
-    {
-        for (const auto& item : items) {
-            if (item.getId() == target_id) {
-                return item;
-            }
+    for (const auto& item : items) {
+        if (item.getId() == target_id) {
+            return item;
         }
-        throw std::out_of_range("Invalid ID: " + std::to_string(target_id));
     }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
+    if (target_id < 0 || target_id >= next_id) {
+        AgendaItem invalid_item;
+        invalid_item.setId(-1);
     }
     return AgendaItem(); 
 }
@@ -205,15 +201,20 @@ void Agenda::clearFilter() {
 }
 
 void Agenda::displayList(int begin, int end) const {
+    std::cout << std::endl;
+    if (!items.size()) {
+        std::cout << "[ÔÝÎÞÊý¾Ý NO DATA]" << std::endl;
+        return;
+    }
     if (!filtered_indices.empty()) {
         int display_end = (end == -1 || end >= filtered_indices.size()) ? filtered_indices.size() : end + 1;
         for (int i = begin; i < display_end; ++i) {
-            items[filtered_indices[i]].displaySingle();
+            items[filtered_indices[i]].displayBrief();
         }
     } else {
         int display_end = (end == -1 || end >= items.size()) ? items.size() : end + 1;
         for (int i = begin; i < display_end; ++i) {
-            items[i].displaySingle();
+            items[i].displayBrief();
         }
     }
 }

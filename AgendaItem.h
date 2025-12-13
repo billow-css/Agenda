@@ -38,6 +38,7 @@ public:
     
     // bool isOverdue() const;
      void displaySingle() const;
+     void displayBrief() const;
     // std::string toString() const;
     // static AgendaItem fromString(std::string str);
 
