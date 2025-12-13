@@ -27,12 +27,17 @@ class Console {
 
         void showMessage(const std::string& message);
         void clearScreen();
+        void pauseScreen(){
+            std::cout << "Press Enter to continue...";
+            std::cin.ignore(255, '\n');
+        }
 
         void menuA01();
         void menuA02();
         void menuB01();
         void menuB02();
         void menuB03();
+        void menuB04();
         void menuC01();
         void menuC02(int export_type);
         void menuH01();
@@ -51,4 +56,5 @@ class Console {
         FileProcess file_processor;
         int current_state;
         int selected_item_id;
+        int is_first_open = 0;
 };
