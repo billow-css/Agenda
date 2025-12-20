@@ -1,0 +1,599 @@
+[
+    {
+        "classes": [
+            {
+                "className": "AgendaManager",
+                "lineNumber": 17,
+                "methods": [
+                    {
+                        "access": "public",
+                        "index": 9,
+                        "isConst": true,
+                        "name": "getAllItems",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 10,
+                        "isConst": true,
+                        "name": "getItem",
+                        "returnType": "QVariantMap"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "desc",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "ddl",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "time",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "priority",
+                                "type": "int"
+                            },
+                            {
+                                "name": "status",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 11,
+                        "name": "addItem",
+                        "returnType": "int"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "desc",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "ddl",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "time",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "priority",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 12,
+                        "isCloned": true,
+                        "name": "addItem",
+                        "returnType": "int"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            },
+                            {
+                                "name": "updates",
+                                "type": "QVariantMap"
+                            }
+                        ],
+                        "index": 13,
+                        "name": "updateItem",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 14,
+                        "name": "removeItem",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "ids",
+                                "type": "QVariantList"
+                            }
+                        ],
+                        "index": 15,
+                        "name": "removeItems",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "index": 16,
+                        "name": "clearAll",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "input",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 17,
+                        "isConst": true,
+                        "name": "processDateInput",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "input",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 18,
+                        "isConst": true,
+                        "name": "fixTimeFormat",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
+                        "index": 19,
+                        "isConst": true,
+                        "name": "getTodayDate",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
+                        "index": 20,
+                        "isConst": true,
+                        "name": "getCurrentTime",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "sortCode",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 21,
+                        "name": "sortBy",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filterCode",
+                                "type": "int"
+                            },
+                            {
+                                "name": "filterValue",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 22,
+                        "name": "applyFilter",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filterCode",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 23,
+                        "isCloned": true,
+                        "name": "applyFilter",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 24,
+                        "name": "clearFilter",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "keyword",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 25,
+                        "isConst": true,
+                        "name": "searchItems",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 26,
+                        "name": "markAsCompleted",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 27,
+                        "name": "toggleCompletion",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "ids",
+                                "type": "QVariantList"
+                            }
+                        ],
+                        "index": 28,
+                        "name": "markAsCompletedBatch",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 29,
+                        "name": "importFromCSV",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 30,
+                        "name": "exportToCSV",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 31,
+                        "name": "importFromTXT",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            },
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 32,
+                        "name": "exportToTXT",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "index": 33,
+                        "name": "autoSave",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "index": 34,
+                        "name": "autoLoad",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "index": 35,
+                        "isConst": true,
+                        "name": "getStatusOptions",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "index": 36,
+                        "isConst": true,
+                        "name": "getPriorityOptions",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "status",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 37,
+                        "isConst": true,
+                        "name": "getStatusText",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "priority",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 38,
+                        "isConst": true,
+                        "name": "getPriorityText",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "status",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 39,
+                        "isConst": true,
+                        "name": "getStatusColor",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "priority",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 40,
+                        "isConst": true,
+                        "name": "getPriorityColor",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
+                        "index": 41,
+                        "isConst": true,
+                        "name": "getStatistics",
+                        "returnType": "QVariantMap"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "priority",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 42,
+                        "name": "quickAddItem",
+                        "returnType": "int"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 43,
+                        "isCloned": true,
+                        "name": "quickAddItem",
+                        "returnType": "int"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 44,
+                        "name": "quickCompleteItem",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "itemCount",
+                        "notify": "dataChanged",
+                        "read": "itemCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "name": "currentFilter",
+                        "notify": "filterChanged",
+                        "read": "currentFilter",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "name": "isLoading",
+                        "notify": "loadingChanged",
+                        "read": "isLoading",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "AgendaManager",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "name": "dataChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "name": "filterChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "name": "loadingChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "message",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 3,
+                        "name": "errorOccurred",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "message",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 4,
+                        "name": "operationCompleted",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 5,
+                        "name": "itemAdded",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 6,
+                        "name": "itemRemoved",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 7,
+                        "name": "itemUpdated",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "count",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 8,
+                        "name": "itemsImported",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "agendamanager.h",
+        "outputRevision": 69
+    }
+]

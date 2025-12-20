@@ -1,0 +1,10 @@
+module Agenda
+typeinfo appAgenda.qmltypes
+prefer :/qt/qml/Agenda/
+Main 1.0 Main.qml
+DatePicker 1.0 DatePicker.qml
+TimePicker 1.0 TimePicker.qml
+AgendaItemDelegate 1.0 AgendaItemDelegate.qml
+StatCard 1.0 StatCard.qml
+depends QtQuick
+

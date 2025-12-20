@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/qt/qml/Agenda">D:/desktop/Agenda/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/Agenda</file>
+
+  </qresource>
+</RCC>
