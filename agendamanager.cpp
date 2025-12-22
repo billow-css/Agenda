@@ -388,7 +388,7 @@ void AgendaManager::applyFilter(int filterCode, const QString &filterValue)
         case 3: // BY_STATUS
             if (filterValue == "0") m_currentFilter = "等待处理";
             else if (filterValue == "1") m_currentFilter = "已完成";
-            else if (filterValue == "2") m_currentFilter = "已超时";
+            else if (filterValue == "2") m_currentFilter = "已取消";
             else if (filterValue == "3") m_currentFilter = "暂停";
             else m_currentFilter = "状态筛选";
             break;
@@ -641,7 +641,7 @@ QVariantList AgendaManager::getStatusOptions() const
     options.append(QVariantMap{{"text", "全部"}, {"value", -1}});
     options.append(QVariantMap{{"text", "等待处理"}, {"value", 0}});
     options.append(QVariantMap{{"text", "已完成"}, {"value", 1}});
-    options.append(QVariantMap{{"text", "已超时"}, {"value", 2}});
+    options.append(QVariantMap{{"text", "已取消"}, {"value", 2}});
     options.append(QVariantMap{{"text", "暂停"}, {"value", 3}});
     return options;
 }
@@ -662,7 +662,7 @@ QString AgendaManager::getStatusText(int status) const
     switch (status) {
     case 0: return "等待处理";
     case 1: return "已完成";
-    case 2: return "已超时";
+    case 2: return "已取消";
     case 3: return "暂停";
     default: return "未知";
     }

@@ -4,21 +4,25 @@ import QtQuick.Window
 import QtQuick.Layouts
 import QtQuick.Dialogs
 import Qt.labs.platform as Platform
+import Qt.labs.settings
 
 ApplicationWindow {
     id: mainWindow
     width: 1200
     height: 800
     visible: true
-    title: qsTr("Agenda 日程管理系统")
+    title: qsTr("Agenda 2.3.6")
 
     // 属性
     property var currentItem: ({})
     property bool isEditing: false
     property var selectedItems: []
     property string searchKeyword: ""
-    property bool showTutorial: true
     property bool multiSelect: false
+    Settings{
+        id:showTutorial
+        property bool showTutorial: true
+    }
 
 
     Keys.onPressed: {
@@ -95,125 +99,215 @@ ApplicationWindow {
 
     // 初始化时加载数据
     Component.onCompleted: {
-        if (showTutorial) {
+        if (showTutorial.showTutorial) {
             tutorialDialog.open()
+        }
+        else{
+            welcomePage.open()
         }
     }
 
     // ========== 对话框 ==========
-
+    // 欢迎对话框
+    Dialog{
+        id: welcomePage
+        width: 600
+        background: Rectangle{
+            radius: 8
+            clip: true
+        }
+        anchors.centerIn: parent
+        modal: true
+        contentItem: Item{
+            anchors.fill: parent
+            Column {
+                spacing: 5
+                anchors.fill: parent
+                width: parent.width
+                Image {
+                    id: bac
+                    source: "qrc:/pic/bac.jpg"
+                    width: parent.width
+                    fillMode: Image.PreserveAspectFit
+                }
+                Image {
+                    id: logo111
+                    height: 50
+                    source: "qrc:/logo/logo_main.png"
+                    fillMode: Image.PreserveAspectFit
+                    anchors.left: parent.left
+                }
+                ColumnLayout{
+                    spacing: 5
+                    anchors.left: parent.left
+                    anchors.leftMargin: 15
+                    Label {
+                        anchors.left: parent.leftMargin
+                        text: "日程管理系统"
+                        font.pixelSize: 14
+                        wrapMode: Text.WordWrap
+                        font.bold: true
+                        Layout.fillWidth: true
+                    }
+                    Label {
+                        anchors.left: parent.leftMargin
+                        text: "put YOUR EVERYING on the Agenda."
+                        font.pixelSize: 14
+                        opacity: 0.6
+                        wrapMode: Text.WordWrap
+                        font.italic: true
+                        Layout.fillWidth: true
+                    }
+                }
+            }
+        }
+    }
     // 教程对话框
     Dialog {
         id: tutorialDialog
         title: "欢迎使用 Agenda"
         width: 600
-        height: 500
+        height: 700
         modal: true
+        anchors.centerIn: parent
 
         ColumnLayout {
             anchors.fill: parent
             spacing: 15
+            // 内边距移到布局内（Dialog 层级的 Layout.margins 无效）
+            Layout.margins: 20
 
-            Label {
-                text: "📋 快速指引"
-                font.pixelSize: 20
-                font.bold: true
-                color: "#2c3e50"
-            }
+            Image {
+                        id: logo
+                        source: "qrc:/logo/logo_main.png"
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: 100
+                        Layout.alignment: Qt.AlignHCenter
+                        fillMode: Image.PreserveAspectFit
+                    }
 
             Label {
                 text: "智能输入特性："
                 font.bold: true
+                // 确保标签占满宽度，文字不被截断
+                Layout.fillWidth: true
             }
 
             ColumnLayout {
                 spacing: 8
+                Layout.fillWidth: true  // 占满宽度，适配换行
 
                 Label {
                     text: "• 日期输入：输入 'today' 或 'T' 自动转换为今日日期"
                     wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
                 }
 
                 Label {
                     text: "• 日期输入：纯数字自动转换为今日日期"
                     wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
                 }
 
                 Label {
                     text: "• 日期输入：支持多种格式 (2024-12-31, 2024.12.31, 2024/12/31)"
                     wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
                 }
 
                 Label {
                     text: "• 时间输入：'3:5' 自动转换为 '03:05'"
                     wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
                 }
 
                 Label {
                     text: "• 时间输入：支持多种分隔符 (3-5, 3.5, 3/5)"
                     wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
                 }
 
                 Label {
                     text: "• 时间输入：纯数字自动转换为 '00:00'"
                     wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
                 }
             }
 
             Label {
                 text: "快捷操作："
                 font.bold: true
+                Layout.fillWidth: true
             }
 
             ColumnLayout {
                 spacing: 8
+                Layout.fillWidth: true
 
                 Label {
                     text: "• 点击日程：查看详情"
                     wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
                 }
 
                 Label {
                     text: "• 双击日程：快速编辑"
                     wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
                 }
 
                 Label {
                     text: "• 右键日程：显示操作菜单"
                     wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
                 }
 
                 Label {
                     text: "• Ctrl+单击：多选日程"
                     wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
                 }
             }
 
             Label {
                 text: "自动保存："
                 font.bold: true
+                Layout.fillWidth: true
             }
 
             Label {
                 text: "• 数据每30秒自动保存"
                 wrapMode: Text.WordWrap
+                Layout.fillWidth: true
             }
 
             Label {
                 text: "• 程序启动时自动加载上次保存的数据"
                 wrapMode: Text.WordWrap
+                Layout.fillWidth: true
             }
 
             CheckBox {
                 id: dontShowAgain
                 text: "下次不再显示此教程"
+                // 修复：让复选框水平居中，避免贴边
+                Layout.alignment: Qt.AlignHCenter
+                Layout.topMargin: 20  // 增加顶部间距，和上方内容分开
             }
         }
 
         standardButtons: Dialog.Ok
 
         onAccepted: {
-            showTutorial = !dontShowAgain.checked
+            // 保留你的 showTutorial 写法（setting 对象+同名成员）
+            showTutorial.showTutorial = !dontShowAgain.checked
+        }
+
+        onOpened: {
+            // 修复：赋值给 checked 属性，而非 CheckBox 对象本身
+            if (showTutorial.showTutorial == false) {
+                dontShowAgain.checked = true
+            }
         }
     }
 
@@ -285,6 +379,7 @@ ApplicationWindow {
                 MenuItem{text:"打开仓库"; onClicked: {
                         Qt.openUrlExternally("https://github.com/billow-css/Agenda")}}
                 MenuItem{text:"关于"; onClicked: aboutDialog.open()}
+                MenuItem{text:"欢迎页面"; onClicked: welcomePage.open()}
             }
         }
 
@@ -416,7 +511,7 @@ ApplicationWindow {
             ComboBox {
                 id: filterCombo
                 Layout.preferredWidth: 150
-                model: ["清空筛选器", "等待处理", "已完成", "已超时", "暂停", "优先级筛选"]
+                model: ["清空筛选器", "等待处理", "已完成", "已取消", "暂停", "优先级筛选"]
                 onCurrentIndexChanged: {
                     if (currentIndex === 0) {
                         agendaManager.clearFilter()
@@ -576,6 +671,8 @@ ApplicationWindow {
         width: 500
         height: 600
         modal: true
+        anchors.centerIn: parent
+
 
         property string selectedDate: agendaManager.getTodayDate()
         property string selectedTime: agendaManager.getCurrentTime()
@@ -713,7 +810,7 @@ ApplicationWindow {
                 model: [
                     {text: "等待处理", value: 0, color: "#3498db"},
                     {text: "已完成", value: 1, color: "#2ecc71"},
-                    {text: "已超时", value: 2, color: "#e74c3c"},
+                    {text: "已取消", value: 2, color: "#e74c3c"},
                     {text: "暂停", value: 3, color: "#f39c12"}
                 ]
                 textRole: "text"
@@ -993,7 +1090,7 @@ ApplicationWindow {
                 model: [
                     {text: "等待处理", value: 0, color: "#3498db"},
                     {text: "已完成", value: 1, color: "#2ecc71"},
-                    {text: "已超时", value: 2, color: "#e74c3c"},
+                    {text: "已取消", value: 2, color: "#e74c3c"},
                     {text: "暂停", value: 3, color: "#f39c12"}
                 ]
                 textRole: "text"
@@ -1394,12 +1491,12 @@ ApplicationWindow {
                     icon: "✅"
                 }
 
-                // 已超时卡片
+                // 已取消卡片
                 StatCard {
-                    title: "已超时"
+                    title: "已取消"
                     value: statsDialog.overdue
                     color: "#e74c3c"
-                    icon: "⚠️"
+                    icon: "❌️"
                 }
 
                 // 暂停卡片
@@ -1461,7 +1558,7 @@ ApplicationWindow {
                             color: "#2ecc71"
                         }
 
-                        Label { text: "已超时" }
+                        Label { text: "已取消" }
                         Label {
                             text: statsDialog.overdue
                             Layout.alignment: Qt.AlignRight
@@ -1554,7 +1651,7 @@ ApplicationWindow {
             content += "总日程: " + statsDialog.total + "\n"
             content += "已完成: " + statsDialog.completed + "\n"
             content += "等待处理: " + statsDialog.queue + "\n"
-            content += "已超时: " + statsDialog.overdue + "\n"
+            content += "已取消: " + statsDialog.overdue + "\n"
             content += "暂停: " + statsDialog.pause + "\n"
             content += "完成率: " + Math.round(statsDialog.completionRate) + "%" + "\n"
 
@@ -1626,7 +1723,6 @@ ApplicationWindow {
         title: "关于 Agenda"
         anchors.centerIn: parent
         width: 500
-        height: 570
         modal: true
 
         standardButtons: Dialog.Ok
@@ -1635,77 +1731,21 @@ ApplicationWindow {
             anchors.fill: parent
             spacing: 15
 
-            // 标题
-            Label {
-                text: "📅 Agenda 日程管理系统"
-                font.pixelSize: 24
-                font.bold: true
-                color: "#2c3e50"
-                Layout.alignment: Qt.AlignHCenter
-            }
+            Image {
+                        id: logo1
+                        source: "qrc:/logo/logo_main.png"
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: 100
+                        Layout.alignment: Qt.AlignHCenter
+                        fillMode: Image.PreserveAspectFit
+                    }
+
 
             // 版本信息
             Label {
-                text: "版本 1.0.0"
+                text: "版本 2.3.6"
                 color: "#7f8c8d"
                 Layout.alignment: Qt.AlignHCenter
-            }
-
-            // 功能列表
-            Frame {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-
-                ColumnLayout {
-                    anchors.fill: parent
-                    spacing: 10
-
-                    Label {
-                        text: "✨ 功能特性"
-                        font.bold: true
-                        font.pixelSize: 16
-                        color: "#2c3e50"
-                    }
-
-                    ColumnLayout {
-                        spacing: 8
-
-                        Label {
-                            text: "✓ 智能日程管理：添加、编辑、删除、筛选"
-                            wrapMode: Text.WordWrap
-                        }
-
-                        Label {
-                            text: "✓ 智能输入识别：日期时间多种格式自动转换"
-                            wrapMode: Text.WordWrap
-                        }
-
-                        Label {
-                            text: "✓ 实时数据展示：无刷新按钮，数据变化即时更新"
-                            wrapMode: Text.WordWrap
-                        }
-
-                        Label {
-                            text: "✓ 批量操作：支持多选、批量删除、批量完成"
-                            wrapMode: Text.WordWrap
-                        }
-
-                        Label {
-                            text: "✓ 文件操作：导入/导出 CSV/TXT 格式"
-                            wrapMode: Text.WordWrap
-                        }
-
-                        Label {
-                            text: "✓ 数据统计：可视化统计和完成率分析"
-                            wrapMode: Text.WordWrap
-                        }
-
-                        Label {
-                            text: "✓ 自动保存：每30秒自动保存，防止数据丢失"
-                            wrapMode: Text.WordWrap
-                        }
-                    }
-                }
             }
 
             // 技术栈
@@ -1723,7 +1763,7 @@ ApplicationWindow {
 
             // 版权信息
             Text {
-                text: "© 2024 Agenda System. All rights reserved."
+                text: "© 2025 Nuist. All rights reserved."
                 color: "#95a5a6"
                 font.pixelSize: 12
                 Layout.alignment: Qt.AlignHCenter

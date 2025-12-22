@@ -8,9 +8,11 @@ find_package(Qt6 REQUIRED COMPONENTS Quick)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
+set(CMAKE_AUTORCC ON)
 qt_add_executable(appAgenda
-    main.cpp
+    main.cpp image.qrc icon.rc
 )
+
 
 qt_add_qml_module(appAgenda
     URI Agenda
@@ -23,6 +25,7 @@ qt_add_qml_module(appAgenda
         QML_FILES TimePicker.qml
         QML_FILES AgendaItemDelegate.qml
         QML_FILES StatCard.qml
+        RESOURCES image.qrc
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -46,3 +49,7 @@ install(TARGETS appAgenda
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+
+
+

@@ -8,6 +8,7 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+    app.setWindowIcon(QIcon(":/logo/ico.png"));
     // 设置应用程序信息
     app.setApplicationName("Agenda");
     app.setOrganizationName("AgendaSoft");
