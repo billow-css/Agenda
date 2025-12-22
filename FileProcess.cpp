@@ -90,10 +90,17 @@ bool FileProcess::exportList(const Agenda &agenda, string file_path) {
     if (!file.is_open()) return false;
     
     file << "id,name,description,ddl,time,status,priority" << endl;
-    // 示例数据
-    file << "1,完成项目报告,撰写项目总结报告,2023/12/20,18:00,0,1" << endl;
-    file << "2,小组会议,每周小组进度同步,2023/12/18,15:30,0,2" << endl;
     
+        for (int i = 1; i <= agenda.getItemCount(); ++i) {
+        AgendaItem item = agenda.getItem(i);
+        file << item.getId() << ","
+             << escapeCSVField(item.getName()) << ","
+             << escapeCSVField(item.getDescription()) << ","
+             << item.getDDL() << ","
+             << item.getTime() << ","
+             << item.getStatus() << ","
+             << item.getPriority() << endl;
+    }
     file.close();
     return true;
 }
@@ -194,11 +201,6 @@ bool FileProcess::exportCard(const AgendaItem &item, string file_path) {
 bool FileProcess::validateFilePath(string file_path) {
     if (file_path.empty()) return false;
     
-    string ext = getFileExtension(file_path);
-    if (ext != ".csv" && ext != ".txt" && 
-        ext != ".CSV" && ext != ".TXT") {
-        return false;
-    }
     
     string illegal_chars = "<>:\"|?*";
     for (char c : illegal_chars) {
